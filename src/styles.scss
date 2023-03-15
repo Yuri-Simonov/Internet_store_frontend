@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+// Шрифты
+// @import "styles/_fonts";
+
+// Миксины
+// @import "styles/_mixins";
+
+// Обнуляющие стили
+@import "styles/_nullstyle";
+
+// Переменные
+@import "styles/_vars";
+
+// Скролл
+// @import "styles/_scroll";
+
+// toastr
+// @import "ngx-toastr/toastr";
+
+// Стили корневых тегов и классов
+
+html {
+  //   font-family: $font_family_common;
+  font-size: 62.5%;
+  line-height: 130%;
+}
+
+body {
+  background-color: $nosaturation;
+  color: $elise;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 144rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}

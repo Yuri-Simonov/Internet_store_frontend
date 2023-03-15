@@ -1,0 +1,70 @@
+@import "src/styles/_vars";
+
+.header {
+    background-color: $dark;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__logo {
+        font-size: 4rem;
+        color: $aspid;
+    }
+
+    &__burger {
+    }
+
+    &__nav {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        a {
+            color: $light;
+            transition: all 0.3s ease;
+            &:hover {
+                color: $aspid;
+            }
+        }
+    }
+
+    &__link {
+    }
+
+    &__user {
+    }
+
+    &__user-main {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        &:hover {
+            .header__user-avatar {
+                box-shadow: 0 0 1rem 0 $light;
+            }
+        }
+    }
+
+    &__user-avatar {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        border: 0.2rem solid $light;
+        transition: all 0.3s ease;
+    }
+
+    &__user-name {
+    }
+}
