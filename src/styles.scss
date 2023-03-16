@@ -1,5 +1,5 @@
 // Шрифты
-// @import "styles/_fonts";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 // Миксины
 // @import "styles/_mixins";
@@ -17,27 +17,31 @@
 // @import "ngx-toastr/toastr";
 
 // Стили корневых тегов и классов
-
 html {
-  //   font-family: $font_family_common;
-  font-size: 62.5%;
-  line-height: 130%;
+    font-family: "Roboto", sans-serif;
+    font-size: 62.5%;
+    line-height: 130%;
 }
 
 body {
-  background-color: $nosaturation;
-  color: $elise;
+    background-color: $nosaturation;
+    color: $elise;
 }
 
 .wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
-  max-width: 144rem;
-  margin: 0 auto;
-  padding: 0 2rem;
+    max-width: 144rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

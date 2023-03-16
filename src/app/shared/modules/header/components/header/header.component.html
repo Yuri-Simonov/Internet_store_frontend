@@ -1,0 +1,39 @@
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <div class="header__logo">IS2023</div>
+            <div class="header__burger"></div>
+            <nav class="header__nav">
+                <a routerLink="#" class="header__link">Главная</a>
+                <a routerLink="#" class="header__link">Заказы</a>
+                <a routerLink="#" class="header__link">Избранное</a>
+                <a routerLink="#" class="header__link">Корзина</a>
+            </nav>
+            <div class="header__user">
+                <div
+                    class="header__main"
+                    [ngClass]="{ header__main_hover: dropdownVisible }"
+                    (mouseover)="showDropdown()"
+                    (mouseleave)="hideDropdown()"
+                >
+                    <img
+                        class="header__avatar"
+                        src="../../../../../assets/img/some_image.jpeg"
+                        alt="avatar"
+                    />
+                    <p class="header__name">
+                        <span>Юрий Симонов</span>
+                        <!-- Нужно подредактировать саму иконку для корректной анимации -->
+                        <app-arrow-down-svg></app-arrow-down-svg>
+                    </p>
+                    <ul class="header__dropdown" *ngIf="dropdownVisible">
+                        <li><a routerLink="#">Личный кабинет</a></li>
+                        <li><a routerLink="#">Настройки</a></li>
+                        <li class="disabled"><a routerLink="#">Баллы</a></li>
+                        <li><a routerLink="#">Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

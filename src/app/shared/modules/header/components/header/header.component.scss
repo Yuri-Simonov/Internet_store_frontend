@@ -1,0 +1,118 @@
+@import "src/styles/_vars";
+
+.header {
+    background-color: $dark;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__logo {
+        font-size: 3rem;
+        color: $light;
+    }
+
+    &__burger {
+    }
+
+    &__nav {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        a {
+            color: $elise;
+            transition: all 0.3s ease;
+            &:hover {
+                color: $aspid;
+            }
+        }
+    }
+
+    &__link {
+    }
+
+    &__user {
+    }
+
+    &__main {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            .header__avatar {
+                box-shadow: 0 0 1rem 0 $elise;
+            }
+        }
+
+        &_hover {
+            .header__name > app-arrow-down-svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__avatar {
+        cursor: pointer;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        border: 0.2rem solid $elise;
+        transition: all 0.3s ease;
+    }
+
+    &__name {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-left: 1rem;
+        color: $elise;
+
+        ::ng-deep svg {
+            transform-origin: center;
+            transform: rotate(0deg);
+            transition: 2.3s;
+
+            g {
+                stroke: $elise;
+            }
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: $elise;
+        color: $dark;
+        border-radius: 1rem;
+        padding: 1rem 0;
+
+        li {
+            cursor: pointer;
+            padding: 1rem 2rem;
+
+            transition: all 0.3s ease;
+            &:hover {
+                background-color: $elise;
+            }
+        }
+
+        li:nth-last-child(1) {
+            padding-top: 1.5rem;
+            border-top: 1px solid $nosaturation;
+        }
+    }
+}
