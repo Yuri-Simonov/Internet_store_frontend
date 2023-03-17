@@ -1,0 +1,135 @@
+@import "src/styles/_vars";
+
+:host {
+    height: 100vh;
+    width: 100vw;
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__body {
+        display: grid;
+        grid-template-columns: 45rem 32rem;
+        align-items: center;
+
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: calc(100% + 0.5rem);
+            height: calc(100% + 0.5rem);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(180deg, $sky, $dark);
+            filter: blur(2rem);
+            margin: auto;
+        }
+    }
+
+    &__main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 5rem 2rem;
+        background-color: $elise;
+        border-radius: 2rem 0 0 2rem;
+        color: $dark;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    &__prompt {
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    &__label {
+        width: 100%;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border: 1px solid $sky;
+        border-radius: 1rem;
+        font-size: 1.4rem;
+        background-color: $white;
+
+        &::placeholder {
+            color: $sky;
+        }
+    }
+
+    &__error {
+        color: $error;
+        font-size: 1.2rem;
+    }
+
+    &__submit {
+        min-width: 20rem;
+        padding: 1rem 3rem;
+        background: linear-gradient(180deg, $sky, $dark);
+        font-size: 1.6rem;
+        border-radius: 2rem;
+        color: $elise;
+
+        transition: all 0.3s ease;
+        &:hover {
+            filter: hue-rotate(20deg);
+            color: $elise;
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        a {
+            color: $sky;
+        }
+    }
+
+    &__secondary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        height: 100%;
+        background: linear-gradient(180deg, $sky, $dark);
+        border-radius: 0 2rem 2rem 0;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    &__subtitle {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    &__text {
+        span {
+            color: $gold;
+        }
+    }
+}

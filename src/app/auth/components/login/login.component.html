@@ -1,0 +1,41 @@
+<section class="login">
+    <div class="login__body">
+        <div class="login__main">
+            <h1 class="login__title">Авторизация</h1>
+            <p class="login__prompt">
+                Для входа в аккаунт, заполните поля формы
+            </p>
+            <form method="post" class="login__form">
+                <label class="login__label">
+                    <input
+                        type="email"
+                        class="login__input"
+                        placeholder="Введите email"
+                    />
+                    <p class="login__error">Какая-то ошибка при заполнении</p>
+                </label>
+                <label class="login__label">
+                    <input
+                        type="password"
+                        class="login__input"
+                        placeholder="Введите пароль"
+                    />
+                    <p class="login__error">Какая-то ошибка при заполнении</p>
+                </label>
+                <button class="login__submit">Войти</button>
+            </form>
+            <div class="login__links">
+                <a routerLink="/register"> Нет аккаунта? Зарегистрируйтесь </a>
+                <a routerLink="/register" class="disabled"> Забыли пароль? </a>
+            </div>
+        </div>
+        <div class="login__secondary">
+            <h2 class="login__subtitle">С возрвращением!</h2>
+            <p class="login__text">
+                Мы рады, что вы решили вернуться к покупкам на
+                <span>IS2023</span>! Надеемся, что вы сможете найти у нас все
+                необходимое :)
+            </p>
+        </div>
+    </div>
+</section>

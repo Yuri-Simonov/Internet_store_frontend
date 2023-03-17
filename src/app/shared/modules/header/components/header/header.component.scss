@@ -32,7 +32,7 @@
             color: $elise;
             transition: all 0.3s ease;
             &:hover {
-                color: $aspid;
+                color: $gold;
             }
         }
     }
@@ -44,6 +44,7 @@
     }
 
     &__main {
+        cursor: pointer;
         position: relative;
         display: flex;
         justify-content: center;
@@ -57,13 +58,13 @@
 
         &_hover {
             .header__name > app-arrow-down-svg {
+                transition: 0.3s;
                 transform: rotate(180deg);
             }
         }
     }
 
     &__avatar {
-        cursor: pointer;
         width: 5rem;
         height: 5rem;
         border-radius: 50%;
@@ -72,21 +73,23 @@
     }
 
     &__name {
-        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 0.6rem;
         padding-left: 1rem;
         color: $elise;
 
         ::ng-deep svg {
             transform-origin: center;
             transform: rotate(0deg);
-            transition: 2.3s;
 
-            g {
-                stroke: $elise;
+            width: 1.2rem;
+            height: auto;
+            max-height: 2rem;
+
+            path {
+                fill: $elise;
             }
         }
     }
@@ -106,7 +109,11 @@
 
             transition: all 0.3s ease;
             &:hover {
-                background-color: $elise;
+                background-color: $light;
+            }
+
+            a {
+                color: $dark;
             }
         }
 
