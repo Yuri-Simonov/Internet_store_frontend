@@ -2,6 +2,8 @@
 
 Пет-проект для портфолио. На данный момент проект находится в разработке.
 
+Проект задеплоен на GitHub Pages. Посмотреть можно в соответствующем разделе "Environments" или [по этой ссылке](https://yuri-simonov.github.io/Internet_store_frontend/Internet_store_frontend/):
+
 ## На чем написан Frontend приложения
 
 За основу фронтенда взят Angular (version 14.2.6);
