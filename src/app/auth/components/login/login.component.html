@@ -5,12 +5,18 @@
             <p class="login__prompt">
                 Для входа в аккаунт, заполните поля формы
             </p>
-            <form method="post" class="login__form">
+            <form
+                method="post"
+                class="login__form"
+                [formGroup]="loginForm"
+                (submit)="login()"
+            >
                 <label class="login__label">
                     <input
                         type="email"
                         class="login__input"
                         placeholder="Введите email"
+                        formControlName="email"
                     />
                     <p class="login__error">Какая-то ошибка при заполнении</p>
                 </label>
@@ -19,6 +25,7 @@
                         type="password"
                         class="login__input"
                         placeholder="Введите пароль"
+                        formControlName="password"
                     />
                     <p class="login__error">Какая-то ошибка при заполнении</p>
                 </label>

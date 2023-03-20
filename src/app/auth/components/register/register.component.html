@@ -5,12 +5,18 @@
             <p class="register__prompt">
                 Для создания аккаунта заполните поля формы
             </p>
-            <form method="post" class="register__form">
+            <form
+                method="post"
+                class="register__form"
+                [formGroup]="registerForm"
+                (submit)="register()"
+            >
                 <label class="register__label">
                     <input
                         type="text"
                         class="register__input"
                         placeholder="Введите имя"
+                        formControlName="fullName"
                     />
                     <p class="register__error">
                         Какая-то ошибка при заполнении
@@ -21,6 +27,7 @@
                         type="password"
                         class="register__input"
                         placeholder="Введите пароль"
+                        formControlName="password"
                     />
                     <p class="register__error">
                         Какая-то ошибка при заполнении
@@ -31,6 +38,7 @@
                         type="email"
                         class="register__input"
                         placeholder="Введите email"
+                        formControlName="email"
                     />
                     <p class="register__error">
                         Какая-то ошибка при заполнении
@@ -38,9 +46,10 @@
                 </label>
                 <label class="register__label">
                     <input
-                        type="email"
+                        type="text"
                         class="register__input"
-                        placeholder="Введите email"
+                        placeholder="Введите номер телефона"
+                        formControlName="phone"
                     />
                     <p class="register__error">
                         Какая-то ошибка при заполнении
