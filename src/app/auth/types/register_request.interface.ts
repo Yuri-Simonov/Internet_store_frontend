@@ -1,8 +1,8 @@
-// export interface IRegisterRequest {
-//     user: {
-//         username: string;
-//         email: string;
-//         phone: string;
-//         password: string;
-//     };
-// }
+export interface IRegisterRequest {
+    user: {
+        username: string;
+        email: string;
+        phone: string;
+        password: string;
+    };
+}

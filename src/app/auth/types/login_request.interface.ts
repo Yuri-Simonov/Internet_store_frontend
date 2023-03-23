@@ -1,6 +1,6 @@
-// export interface ILoginRequest {
-//     user: {
-//         email: string;
-//         password: string;
-//     };
-// }
+export interface ILoginRequest {
+    user: {
+        email: string;
+        password: string;
+    };
+}

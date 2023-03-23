@@ -1,9 +1,12 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthService } from 'src/app/auth/components/services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
+
+import { loginAction } from 'src/app/auth/store/actions/login.action';
 
 @Component({
     selector: 'app-login',
@@ -13,12 +16,7 @@ import { AuthService } from 'src/app/auth/components/services/auth.service';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
-    constructor(
-        private fb: FormBuilder,
-        private authService: AuthService,
-        private router: Router,
-        private toastr: ToastrService
-    ) {}
+    constructor(private fb: FormBuilder, private store: Store) {}
 
     ngOnInit(): void {
         this.initializeForm();
@@ -42,15 +40,7 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    login(): void {
-        this.authService
-            .authUser(this.loginForm.value)
-            .subscribe((data: any) => {
-                if (data) {
-                    this.toastr.success('Авторизация прошла успешно!');
-
-                    this.router.navigate(['/']);
-                }
-            });
+    onSubmit(): void {
+        this.store.dispatch(loginAction({ request: this.loginForm.value }));
     }
 }

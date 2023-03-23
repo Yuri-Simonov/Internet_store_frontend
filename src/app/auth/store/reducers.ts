@@ -1,102 +1,95 @@
-// import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
-// import { registerAction } from 'src/app/shared/store/auth/actions/register.action';
-// import {
-//     loginAction,
-//     loginFailureAction,
-//     loginSuccessAction,
-// } from 'src/app/shared/store/auth/actions/login.action';
-// import {
-//     logoutAction,
-//     logoutFailureAction,
-//     logoutSuccessAction,
-// } from 'src/app/shared/store/auth/actions/logout.action';
+import {
+    registerAction,
+    registerFailureAction,
+    registerSuccessAction,
+} from 'src/app/auth/store/actions/register.action';
 
-// import { IAuthState } from 'src/app/shared/types/store/auth_state.interface';
-// import {
-//     contentCloseAction,
-//     contentOpenAction,
-// } from 'src/app/shared/store/common/actions/content.action';
+import { IAuthState } from 'src/app/auth/types/auth_state.interface';
 
-// const initialState: IAuthState = {
-//     isSubmitting: false,
-//     isLoggedIn: false,
-//     error: null,
-//     openContent: false,
-// };
+const initialState: IAuthState = {
+    isSubmitting: false,
+    isLoading: false,
+    currentUser: null,
+    isLoggedIn: null,
+    error: null,
+};
 
-// const authReducer = createReducer(
-//     initialState,
-//     on(
-//         registerAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             isSubmitting: true,
-//         })
-//     ),
-//     on(
-//         loginAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             isSubmitting: true,
-//         })
-//     ),
-//     on(
-//         loginSuccessAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             isSubmitting: false,
-//             isLoggedIn: true,
-//             error: null,
-//         })
-//     ),
-//     on(
-//         loginFailureAction,
-//         (state, action): IAuthState => ({
-//             ...state,
-//             isSubmitting: false,
-//             error: action.error,
-//         })
-//     ),
-//     on(
-//         logoutAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             isSubmitting: true,
-//         })
-//     ),
-//     on(
-//         logoutSuccessAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             isSubmitting: false,
-//             isLoggedIn: false,
-//             error: null,
-//         })
-//     ),
-//     on(
-//         logoutFailureAction,
-//         (state, action): IAuthState => ({
-//             ...state,
-//             isSubmitting: false,
-//             error: action.error,
-//         })
-//     ),
-//     on(
-//         contentOpenAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             openContent: true,
-//         })
-//     ),
-//     on(
-//         contentCloseAction,
-//         (state): IAuthState => ({
-//             ...state,
-//             openContent: false,
-//         })
-//     )
-// );
-// export function reducer(state: IAuthState, action: Action) {
-//     return authReducer(state, action);
-// }
+const reducer = createReducer(
+    initialState,
+    on(
+        registerAction,
+        (state): IAuthState => ({
+            ...state,
+            isSubmitting: true,
+        })
+    ),
+    on(
+        registerSuccessAction,
+        (state): IAuthState => ({
+            ...state,
+            isSubmitting: false,
+        })
+    ),
+    on(
+        registerFailureAction,
+        (state): IAuthState => ({
+            ...state,
+            isSubmitting: false,
+            isLoggedIn: true,
+            error: null,
+        })
+    )
+    // on(
+    //     loginAction,
+    //     (state): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: true,
+    //     })
+    // ),
+    // on(
+    //     loginSuccessAction,
+    //     (state): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: false,
+    //         isLoggedIn: true,
+    //         error: null,
+    //     })
+    // ),
+    // on(
+    //     loginFailureAction,
+    //     (state, action): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: false,
+    //         error: action.error,
+    //     })
+    // ),
+    // on(
+    //     logoutAction,
+    //     (state): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: true,
+    //     })
+    // ),
+    // on(
+    //     logoutSuccessAction,
+    //     (state): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: false,
+    //         isLoggedIn: false,
+    //         error: null,
+    //     })
+    // ),
+    // on(
+    //     logoutFailureAction,
+    //     (state, action): IAuthState => ({
+    //         ...state,
+    //         isSubmitting: false,
+    //         error: action.error,
+    //     })
+    // ),
+);
+export function authReducer(state: IAuthState, action: Action) {
+    return reducer(state, action);
+}
