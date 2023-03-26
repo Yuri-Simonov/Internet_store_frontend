@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../../shared/services/local_storage.service';
 import { Injectable } from '@angular/core';
 import { createEffect } from '@ngrx/effects';
 import { Actions, ofType } from '@ngrx/effects';
@@ -15,16 +16,24 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable()
 export class RegisterEffect {
+    constructor(
+        private actions$: Actions,
+        private authService: AuthService,
+        private localStorageService: LocalStorageService,
+        private router: Router,
+        private toastr: ToastrService
+    ) {}
+
     register$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(registerAction),
             switchMap(({ request }) => {
                 return this.authService.register(request).pipe(
                     map((currentUser: ICurrentUser) => {
-                        // this.persistanceService.set(
-                        //     'accessToken',
-                        //     currentUser.token
-                        // );
+                        this.localStorageService.set(
+                            'accessToken',
+                            currentUser.token
+                        );
                         return registerSuccessAction({ currentUser });
                     })
                 );
@@ -40,17 +49,21 @@ export class RegisterEffect {
             this.actions$.pipe(
                 ofType(registerSuccessAction),
                 tap(() => {
+                    this.toastr.success('Регистрация прошла успешно!');
                     this.router.navigateByUrl('/');
                 })
             ),
         { dispatch: false }
     );
 
-    constructor(
-        private actions$: Actions,
-        private authService: AuthService,
-        // private persistanceService: PersistanceService,
-        private router: Router,
-        private toastr: ToastrService
-    ) {}
+    showErrorNotification$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(registerFailureAction),
+                tap(() => {
+                    this.toastr.error('Не удалось зарегистрироваться!');
+                })
+            ),
+        { dispatch: false }
+    );
 }

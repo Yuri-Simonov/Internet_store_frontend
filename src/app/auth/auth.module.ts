@@ -11,12 +11,17 @@ import { RegisterEffect } from 'src/app/auth/store/effects/register.effect';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from 'src/app/auth/store/reducers';
 
+import { LocalStorageService } from 'src/app/shared/services/local_storage.service';
+
+import { AuthGuard } from 'src/app/auth/guards/auth.guard';
+
 const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent,
+        canActivate: [AuthGuard],
     },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -28,5 +33,6 @@ const routes: Routes = [
         EffectsModule.forFeature([RegisterEffect]),
         StoreModule.forFeature('auth', authReducer),
     ],
+    providers: [LocalStorageService],
 })
 export class AuthModule {}
