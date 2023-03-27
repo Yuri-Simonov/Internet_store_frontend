@@ -4,6 +4,5 @@ export interface IAuthState {
     isSubmitting: boolean;
     isLoading: boolean;
     currentUser: ICurrentUser | null;
-    isLoggedIn: boolean | null;
     error: string | null;
 }

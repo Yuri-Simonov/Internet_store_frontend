@@ -1,4 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import {
+    loginAction,
+    loginFailureAction,
+    loginSuccessAction,
+} from 'src/app/auth/store/actions/login.action';
 
 import {
     registerAction,
@@ -12,7 +17,6 @@ const initialState: IAuthState = {
     isSubmitting: false,
     isLoading: false,
     currentUser: null,
-    isLoggedIn: null,
     error: null,
 };
 
@@ -27,8 +31,9 @@ const reducer = createReducer(
     ),
     on(
         registerSuccessAction,
-        (state): IAuthState => ({
+        (state, action): IAuthState => ({
             ...state,
+            currentUser: action.currentUser,
             isSubmitting: false,
         })
     ),
@@ -37,34 +42,32 @@ const reducer = createReducer(
         (state): IAuthState => ({
             ...state,
             isSubmitting: false,
-            isLoggedIn: true,
             error: null,
         })
+    ),
+    on(
+        loginAction,
+        (state): IAuthState => ({
+            ...state,
+            isSubmitting: true,
+        })
+    ),
+    on(
+        loginSuccessAction,
+        (state, action): IAuthState => ({
+            ...state,
+            isSubmitting: false,
+            currentUser: action.currentUser,
+            error: null,
+        })
+    ),
+    on(
+        loginFailureAction,
+        (state): IAuthState => ({
+            ...state,
+            isSubmitting: false,
+        })
     )
-    // on(
-    //     loginAction,
-    //     (state): IAuthState => ({
-    //         ...state,
-    //         isSubmitting: true,
-    //     })
-    // ),
-    // on(
-    //     loginSuccessAction,
-    //     (state): IAuthState => ({
-    //         ...state,
-    //         isSubmitting: false,
-    //         isLoggedIn: true,
-    //         error: null,
-    //     })
-    // ),
-    // on(
-    //     loginFailureAction,
-    //     (state, action): IAuthState => ({
-    //         ...state,
-    //         isSubmitting: false,
-    //         error: action.error,
-    //     })
-    // ),
     // on(
     //     logoutAction,
     //     (state): IAuthState => ({

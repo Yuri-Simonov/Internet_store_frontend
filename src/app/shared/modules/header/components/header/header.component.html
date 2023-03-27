@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" *ngIf="currentUser$ | async">
     <div class="container">
         <div class="header__body">
             <div class="header__logo">IS2023</div>
@@ -9,7 +9,7 @@
                 <a routerLink="#" class="header__link disabled">Избранное</a>
                 <a routerLink="#" class="header__link disabled">Корзина</a>
             </nav>
-            <div class="header__user">
+            <div class="header__user" *ngIf="currentUser$ | async">
                 <div
                     class="header__main"
                     [ngClass]="{ header__main_hover: dropdownVisible }"
@@ -22,7 +22,7 @@
                         alt="avatar"
                     />
                     <p class="header__name">
-                        <span>Юрий Симонов</span>
+                        <span>{{ (currentUser$ | async)?.fullName }}</span>
                         <!-- Нужно подредактировать саму иконку для корректной анимации -->
                         <app-arrow-down-svg></app-arrow-down-svg>
                     </p>
@@ -34,6 +34,7 @@
                     </ul>
                 </div>
             </div>
+            <a routerLink="/login" *ngIf="!(currentUser$ | async)">Войти</a>
         </div>
     </div>
 </header>

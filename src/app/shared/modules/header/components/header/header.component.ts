@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { currentUserSelector } from 'src/app/auth/store/selectors';
+import { ICurrentUser } from 'src/app/shared/types/current_user.interface';
 
 @Component({
     selector: 'app-header',
@@ -6,11 +11,18 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+    currentUser$: Observable<ICurrentUser | null>;
     dropdownVisible: boolean = false;
 
-    constructor() {}
+    constructor(private store: Store) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.initializeValues();
+    }
+
+    initializeValues(): void {
+        this.currentUser$ = this.store.pipe(select(currentUserSelector));
+    }
 
     showDropdown(): void {
         this.dropdownVisible = true;

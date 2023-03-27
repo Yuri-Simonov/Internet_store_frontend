@@ -56,7 +56,12 @@
                     </p>
                 </label>
 
-                <button class="register__submit">Зарегистрироваться</button>
+                <button
+                    class="register__submit"
+                    [disabled]="isSubmitting$ | async"
+                >
+                    Зарегистрироваться
+                </button>
             </form>
             <div class="register__links">
                 <a routerLink="/login"> Есть аккаунт? Войти </a>

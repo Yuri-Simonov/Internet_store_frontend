@@ -27,6 +27,9 @@ export class LoginEffect {
     login$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(loginAction),
+            tap(() => {
+                console.log('here');
+            }),
             switchMap(({ request }) => {
                 return this.authService.login(request).pipe(
                     map((currentUser: ICurrentUser) => {

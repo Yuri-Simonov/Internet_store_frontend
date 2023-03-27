@@ -29,7 +29,12 @@
                     />
                     <p class="login__error">Какая-то ошибка при заполнении</p>
                 </label>
-                <button class="login__submit">Войти</button>
+                <button
+                    class="login__submit"
+                    [disabled]="isSubmitting$ | async"
+                >
+                    Войти
+                </button>
             </form>
             <div class="login__links">
                 <a routerLink="/register"> Нет аккаунта? Зарегистрируйтесь </a>
