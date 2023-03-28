@@ -1,14 +1,16 @@
 {
     "name": "internet-store-frontend",
     "version": "0.0.0",
+    "homepage": "https://yuri-simonov.github.io/Internet_store_frontend/",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "deploy": "ng deploy --base-href=/Internet_store_frontend/",
         "watch": "ng build --watch --configuration development",
         "test": "ng test"
     },
-    "private": true,
+    "private": false,
     "dependencies": {
         "@angular/animations": "^14.2.0",
         "@angular/common": "^14.2.0",
